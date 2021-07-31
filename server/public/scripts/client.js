@@ -11,5 +11,8 @@ function onReady() {
 function calculateEquation() {
     console.log('inside calculateEquation');
     
-    
+    let newCalculation = {
+        numberOne: $('#inputOne').val(),
+        numberTwo: $('#inputTwo').val(),
+    }
 }

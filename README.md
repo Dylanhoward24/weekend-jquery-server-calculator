@@ -15,7 +15,7 @@
     [X] Create user interface where user can input two values
     [X] Create 4 buttons with + - * / selections
     [ ] Create an = button
-        [ ] Captures input
+        [X] Captures input
         [ ] Bundles input up into object
         [ ] Sends object to the server via POST
     [ ] Create a "C" button
