@@ -4,7 +4,8 @@
   "description": "[ ] Build a server-side calculator (logic must be on server-side)     [ ] Inintial setup         [X] Create server folder             [X] Create public folder                 [X] Create a scripts folder                     [X] Create client.js file                     [X] Create jQuery.js file                 [X] Create index.html file             [X] Create server.js file         [ ] Run commands from terminal             [ ] npm init --yes             [ ] npm install express     [ ] Create user interface where user can input two values     [ ] Create 4 buttons with + - * / selections     [ ] Create an = button         [ ] Captures input         [ ] Bundles input up into object         [ ] Sends object to the server via POST     [ ] Create a \"C\" button         [ ] Clears the input fields     [ ] Build out server-side logic to compute the numbers     [ ] Send back \"OK\" when calculation is complete     [ ] GET request after the POST to get the actual calculation     [ ] Keep a historical record of all solutions on the server         [ ] Display a list of all previous calculations when pages loads using a GET request         [ ] Update the list when a new calculation is made         **history should exist even after refreshing the page... it's expected that the         history will go away after restarting the server**",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/Dylanhoward24/weekend-jquery-server-calculator#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1"
   }
 }
