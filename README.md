@@ -1,6 +1,17 @@
 # Weekend jQuery Server Calculator
 
 [ ] Build a server-side calculator (logic must be on server-side)
+    [ ] Inintial setup
+        [X] Create server folder
+            [X] Create public folder
+                [X] Create a scripts folder
+                    [X] Create client.js file
+                    [X] Create jQuery.js file
+                [X] Create index.html file
+            [X] Create server.js file
+        [ ] Run commands from terminal
+            [ ] npm init --yes
+            [ ] npm install express
     [ ] Create user interface where user can input two values
     [ ] Create 4 buttons with + - * / selections
     [ ] Create an = button
