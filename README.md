@@ -12,8 +12,8 @@
         [X] Run commands from terminal
             [X] npm init --yes
             [X] npm install express
-    [ ] Create user interface where user can input two values
-    [ ] Create 4 buttons with + - * / selections
+    [X] Create user interface where user can input two values
+    [X] Create 4 buttons with + - * / selections
     [ ] Create an = button
         [ ] Captures input
         [ ] Bundles input up into object
