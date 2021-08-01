@@ -18,8 +18,8 @@
         [X] Captures input
         [X] Bundles input up into object
         [X] Sends object to the server via POST
-    [ ] Create a "C" button
-        [ ] Clears the input fields
+    [X] Create a "C" button
+        [X] Clears the input fields
     [X] Build out server-side logic to compute the numbers
     [X] Send back "OK" when calculation is complete
     [X] GET request after the POST to get the actual calculation

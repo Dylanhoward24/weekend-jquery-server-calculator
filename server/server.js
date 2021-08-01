@@ -36,6 +36,8 @@ app.get('/calculations', function(req, res) {
     res.send(calculationHistory);
 });
 
+// the next 4 app.posts are sending the correct operator
+// to the operatorHistory array to be referenced later
 app.post('/add', function(req, res) {
     console.log('we are adding!');
     let operatorToPass = req.body;
@@ -76,6 +78,8 @@ app.post('/calculate', function(req, res) {
     let firstNumber = Number(numbersToPass.numberOne);
     let secondNumber = Number(numbersToPass.numberTwo);
     
+    // checks to see what the last operator was that was clicked
+    // by checking the last input to the operatorHistory array
     if (operatorHistory[operatorHistory.length-1].operator === '+') {
         let equationToPass = {
             numberOne: firstNumber,
@@ -109,5 +113,6 @@ app.post('/calculate', function(req, res) {
         };
       calculationHistory.push(equationToPass);
     }
+    // send back OK
     res.sendStatus(200);
 })

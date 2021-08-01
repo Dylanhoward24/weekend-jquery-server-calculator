@@ -18,8 +18,11 @@ function onReady() {
  ///// console.log('divideBtn', $('#divideBtn'));
     $('#divideBtn').on('click', divideOperator);
 
- ///// console.log('equalsBtn', $('equalsBtn'));
+ ///// console.log('equalsBtn', $('#equalsBtn'));
     $('#equalsBtn').on('click', calculateEquation);
+
+ ///// console.log('clearBtn', $('#clearBtn'));
+    $('#clearBtn').on('click', clearInputFields);
 }
 
 function getCalculations() {
@@ -29,12 +32,27 @@ function getCalculations() {
     }).then(function(response) {
         console.log('GET /calculations response is', response);
         
+        // empty the div id="equationAnswer"
         let answerDisplay = $('#equationAnswer');
         answerDisplay.empty();
 
+        // empty the ul id="equationHistory"
         let calculationsList = $('#equationHistory');
         calculationsList.empty();
 
+        // append the current equation's answer to div
+        // id="equationAnswer" in bold, 24pt text with
+        // a 20px margin on top
+        answerDisplay.append(`${response[response.length-1].answer}`);
+        answerDisplay.css({
+            'font-weight':'bold',
+            'font-size':'24pt',
+            'margin-top':'20px'
+        });
+
+        // append the current and history of equations
+        // to the DOM by looping through the
+        // calculationsHistory array on server side
         for (let calculation of response) {
             calculationsList.append(`
                 <li>
@@ -45,12 +63,6 @@ function getCalculations() {
                 </li>
             `);
         }
-        answerDisplay.append(`${response[response.length-1].answer}`);
-        answerDisplay.css({
-            'font-weight':'bold',
-            'font-size':'24pt',
-            'margin-top':'20px'
-        });
     });
 }
 
@@ -117,9 +129,12 @@ function divideOperator() {
 function calculateEquation() {
     console.log('inside calculateEquation');
     
+    // convert the strings to numbers
     let numberOne = Number($('#inputOne').val());
     let numberTwo = Number($('#inputTwo').val());
 
+    // create an object to be sent to the empty array
+    // on the server side
     let inputNumbers = {
         numberOne: numberOne,
         numberTwo: numberTwo
@@ -134,4 +149,12 @@ function calculateEquation() {
         console.log('POST /calculate', response);
         getCalculations();
     });
+}
+
+function clearInputFields() {
+    console.log('in clearInputFields');
+    
+    // sets value of both inputs to an empty string
+    $('#inputOne').val('');
+    $('#inputTwo').val('');
 }
