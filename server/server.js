@@ -28,3 +28,43 @@ app.listen(port, function() {
     // this is like our onReady function for the server
     console.log('App is up and running on localhost:5000');
 });
+
+app.post('/add', function(req, res) {
+    console.log('we are adding!');
+
+    let operatorToPass = req.body;
+
+    operatorHistory.push(operatorToPass);
+
+    res.sendStatus(201);
+});
+
+app.post('/subtract', function(req, res) {
+    console.log('we are subtracting!');
+
+    let operatorToPass = req.body;
+
+    operatorHistory.push(operatorToPass);
+
+    res.sendStatus(201);
+});
+
+app.post('/multiply', function(req, res) {
+    console.log('we are multiplying!');
+
+    let operatorToPass = req.body;
+
+    operatorHistory.push(operatorToPass);
+
+    res.sendStatus(201);
+});
+
+app.post('/divide', function(req, res) {
+    console.log('we are dividing!');
+
+    let operatorToPass = req.body;
+
+    operatorHistory.push(operatorToPass);
+    
+    res.sendStatus(201);
+});
