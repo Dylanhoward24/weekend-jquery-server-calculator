@@ -9,7 +9,9 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // DATA GOES HERE
+const operatorHistory = [];
 
+const calculationsMade = [];
 
 // tell express where to find all of our "public" files
 // aka "client-side files" or "static assets"
