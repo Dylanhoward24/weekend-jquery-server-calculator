@@ -109,5 +109,5 @@ app.post('/calculate', function(req, res) {
         };
       calculationHistory.push(equationToPass);
     }
-    res.sendStatus(201);
+    res.sendStatus(200);
 })

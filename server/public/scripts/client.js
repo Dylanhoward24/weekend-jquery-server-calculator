@@ -4,7 +4,7 @@ function onReady() {
     console.log('so ready!');
 
     // on page load, grab calculations made from the server
-    // getCalculations();
+    getCalculations();
 
  ///// console.log('addBtn', $('#addBtn'));
     $('#addBtn').on('click', addOperator);
@@ -42,10 +42,9 @@ function getCalculations() {
                 ${calculation.numberTwo} = 
                 ${calculation.answer}
             `);
-            answerDisplay.append(`
-                ${calculation.answer}
-            `);
         }
+        answerDisplay.append(`${response[response.length-1].answer}`);
+        calculationsList.css('display', 'block');
     });
 }
 

@@ -16,16 +16,16 @@
     [X] Create 4 buttons with + - * / selections
     [ ] Create an = button
         [X] Captures input
-        [ ] Bundles input up into object
-        [ ] Sends object to the server via POST
+        [X] Bundles input up into object
+        [X] Sends object to the server via POST
     [ ] Create a "C" button
         [ ] Clears the input fields
-    [ ] Build out server-side logic to compute the numbers
-    [ ] Send back "OK" when calculation is complete
-    [ ] GET request after the POST to get the actual calculation
-    [ ] Keep a historical record of all solutions on the server
-        [ ] Display a list of all previous calculations when pages loads using a GET request
-        [ ] Update the list when a new calculation is made
+    [X] Build out server-side logic to compute the numbers
+    [X] Send back "OK" when calculation is complete
+    [X] GET request after the POST to get the actual calculation
+    [X] Keep a historical record of all solutions on the server
+        [X] Display a list of all previous calculations when pages loads using a GET request
+        [X] Update the list when a new calculation is made
         **history should exist even after refreshing the page... it's expected that the
         history will go away after restarting the server**
 
