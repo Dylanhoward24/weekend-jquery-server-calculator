@@ -22,28 +22,38 @@ function onReady() {
     $('#equalsBtn').on('click', calculateEquation);
 }
 
-// function getCalculations() {
-//     $.ajax({
-//         method: 'GET',
-//         url: '/calculations'
-//     }).then(function(response) {
-//         console.log('GET /calculations response is', response);
+function getCalculations() {
+    $.ajax({
+        method: 'GET',
+        url: '/calculations'
+    }).then(function(response) {
+        console.log('GET /calculations response is', response);
         
-//         let calculationsList = $('#equationHistory');
-//         calculationsList.empty();
+        let answerDisplay = $('#equationAnswer');
+        answerDisplay.empty();
 
-//         for (let equation of response) {
-//             calculationsList.append(`
+        let calculationsList = $('#equationHistory');
+        calculationsList.empty();
 
-//             `)
-//         }
-
-//     });
-// }
+        for (let calculation of response) {
+            calculationsList.append(`
+                ${calculation.numberOne} 
+                ${calculation.operator} 
+                ${calculation.numberTwo} = 
+                ${calculation.answer}
+            `);
+            answerDisplay.append(`
+                ${calculation.answer}
+            `);
+        }
+    });
+}
 
 function addOperator() {
     console.log('add');
-    let operatorToPass = '+'
+    let operatorToPass = {
+        operator: '+'
+    };
 
     $.ajax({
         method: 'POST',
@@ -96,16 +106,19 @@ function divideOperator() {
 function calculateEquation() {
     console.log('inside calculateEquation');
     
-    let newCalculation = {
-        numberOne: $('#inputOne').val(),
-        numberTwo: $('#inputTwo').val(),
+    let numberOne = Number($('#inputOne').val());
+    let numberTwo = Number($('#inputTwo').val());
+
+    let inputNumbers = {
+        numberOne: numberOne,
+        numberTwo: numberTwo
     }
-    console.log('newCalculation is', newCalculation);
+    console.log('inputNumbers are', inputNumbers);
     
     $.ajax({
         method: 'POST',
         url: '/calculate',
-        data: newCalculation,
+        data: inputNumbers,
     }).then((response) => {
         console.log('POST /calculate', response);
         getCalculations();

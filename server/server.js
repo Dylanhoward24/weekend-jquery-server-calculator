@@ -9,9 +9,9 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // DATA GOES HERE
-const operatorHistory = [];
-const numberHistory = [];
-const calculationHistory = [];
+let operatorHistory = [];
+let numberHistory = [];
+let calculationHistory = [];
 
 // tell express where to find all of our "public" files
 // aka "client-side files" or "static assets"
@@ -29,17 +29,18 @@ app.listen(port, function() {
     console.log('App is up and running on localhost:5000');
 });
 
-// app.get('/calculations', function(req, res) {
-//     console.log('ready to send some calculations');
+app.get('/calculations', function(req, res) {
+    console.log('ready to send some calculations');
 
-//     // send back information to be displayed on DOM
-//     res.send()
-// })
+    // send back information to be displayed on DOM
+    res.send(calculationHistory);
+});
 
 app.post('/add', function(req, res) {
     console.log('we are adding!');
     let operatorToPass = req.body;
     operatorHistory.push(operatorToPass);
+    console.log(operatorHistory);
     res.sendStatus(201);
 });
 
@@ -68,15 +69,19 @@ app.post('/calculate', function(req, res) {
     console.log('we are calculating!');
     let numbersToPass = req.body;
     numberHistory.push(numbersToPass);
+    console.log('numbers to pass', numbersToPass);
 
-    if (operatorHistory[operatorHistory.length-1] === '+') {
+    let firstNumber = Number(numbersToPass.numberOne);
+    let secondNumber = Number(numbersToPass.numberTwo);
+    
+    if (operatorHistory[operatorHistory.length-1].operator === '+') {
         let equationToPass = {
-            numberOne: numbersToPass.numberOne,
-            numberTwo: numbersToPass.numberTwo,
+            numberOne: firstNumber,
+            numberTwo: secondNumber,
             operator: '+',
-            answer: numberOne + numberTwo
+            answer: (firstNumber + secondNumber),
         };
       calculationHistory.push(equationToPass);
-      // let answer = numberOne + numberTwo;
     }
+    res.sendStatus(201);
 })
