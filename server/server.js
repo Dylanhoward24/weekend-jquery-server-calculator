@@ -71,6 +71,8 @@ app.post('/calculate', function(req, res) {
     numberHistory.push(numbersToPass);
     console.log('numbers to pass', numbersToPass);
 
+    // convert numbers in the object to integer so math
+    // can be done on the server side
     let firstNumber = Number(numbersToPass.numberOne);
     let secondNumber = Number(numbersToPass.numberTwo);
     
@@ -80,6 +82,30 @@ app.post('/calculate', function(req, res) {
             numberTwo: secondNumber,
             operator: '+',
             answer: (firstNumber + secondNumber),
+        };
+      calculationHistory.push(equationToPass);
+    }else if (operatorHistory[operatorHistory.length-1].operator === '-') {
+        let equationToPass = {
+            numberOne: firstNumber,
+            numberTwo: secondNumber,
+            operator: '-',
+            answer: (firstNumber - secondNumber),
+        };
+      calculationHistory.push(equationToPass);
+    }else if (operatorHistory[operatorHistory.length-1].operator === '*') {
+        let equationToPass = {
+            numberOne: firstNumber,
+            numberTwo: secondNumber,
+            operator: '*',
+            answer: (firstNumber * secondNumber),
+        };
+      calculationHistory.push(equationToPass);
+    }else if (operatorHistory[operatorHistory.length-1].operator === '/') {
+        let equationToPass = {
+            numberOne: firstNumber,
+            numberTwo: secondNumber,
+            operator: '/',
+            answer: (firstNumber / secondNumber),
         };
       calculationHistory.push(equationToPass);
     }

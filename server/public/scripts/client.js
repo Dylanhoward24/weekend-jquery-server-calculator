@@ -66,7 +66,9 @@ function addOperator() {
 
 function subtractOperator() {
     console.log('subtract');
-    let operatorToPass = '-'
+    let operatorToPass = {
+        operator: '-'
+    };
 
     $.ajax({
         method: 'POST',
@@ -79,8 +81,10 @@ function subtractOperator() {
 
 function multiplyOperator() {
     console.log('multiply');
-    let operatorToPass = '*'
-
+    let operatorToPass = {
+        operator: '*'
+    };
+    
     $.ajax({
         method: 'POST',
         url: '/multiply',
@@ -92,8 +96,10 @@ function multiplyOperator() {
 
 function divideOperator() {
     console.log('divide');
-    let operatorToPass = '/'
-
+    let operatorToPass = {
+        operator: '/'
+    };
+    
     $.ajax({
         method: 'POST',
         url: '/divide',
