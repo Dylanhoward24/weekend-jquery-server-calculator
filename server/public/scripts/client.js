@@ -37,14 +37,20 @@ function getCalculations() {
 
         for (let calculation of response) {
             calculationsList.append(`
-                ${calculation.numberOne} 
-                ${calculation.operator} 
-                ${calculation.numberTwo} = 
-                ${calculation.answer}
+                <li>
+                    ${calculation.numberOne} 
+                    ${calculation.operator} 
+                    ${calculation.numberTwo} = 
+                    ${calculation.answer}
+                </li>
             `);
         }
         answerDisplay.append(`${response[response.length-1].answer}`);
-        calculationsList.css('display', 'block');
+        answerDisplay.css({
+            'font-weight':'bold',
+            'font-size':'24pt',
+            'margin-top':'20px'
+        });
     });
 }
 
